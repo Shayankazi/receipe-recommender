@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Lightbulb, Package, ChefHat, Clock, Users, Star } from 'lucide-react';
-import { Card, CardHeader, CardContent } from './ui/Card';
-import { Button } from './ui/Button';
-import { Badge } from './ui/Badge';
+import { Lightbulb, X, Package, Clock, Users, Star, ChefHat } from 'lucide-react';
+import { Card, CardContent, CardHeader } from './react-bits';
+import { Button } from './react-bits';
+import { Badge } from './react-bits';
 import { SlidePanel } from './ui/Modal';
 import { recipes } from '../data/recipes';
 import { pantryItems, pantryCategories } from '../data/pantry';
@@ -66,17 +66,17 @@ export const Suggestions = ({ isOpen, onClose, onRecipeSelect }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <Card>
-            <CardHeader>
-              <div className="flex items-center space-x-2 mb-4">
-                <Package size={20} className="text-primary-600" />
+          <Card className="p-6">
+            <CardHeader className="px-0 pt-0">
+              <div className="flex items-center space-x-3 mb-6">
+                <Package size={22} className="text-primary-600" />
                 <h3 className="text-lg font-display font-bold text-secondary-900">
                   Your Pantry
                 </h3>
               </div>
               
               {/* Category Filter */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-3 mb-6">
                 <Button
                   variant={selectedCategory === 'all' ? 'primary' : 'ghost'}
                   size="sm"
@@ -102,14 +102,14 @@ export const Suggestions = ({ isOpen, onClose, onRecipeSelect }) => {
               </div>
             </CardHeader>
             
-            <CardContent>
-              <div className="space-y-2 max-h-48 overflow-y-auto">
+            <CardContent className="px-0 pb-0">
+              <div className="space-y-3 max-h-48 overflow-y-auto">
                 {filteredPantryItems.map((item, index) => {
                   const category = pantryCategories.find(cat => cat.id === item.category);
                   return (
                     <motion.div
                       key={item.id}
-                      className="flex items-center justify-between p-2 bg-secondary-50 rounded-lg"
+                      className="flex items-center justify-between p-3 bg-secondary-50 rounded-lg"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.2 + index * 0.02 }}
@@ -167,7 +167,7 @@ export const Suggestions = ({ isOpen, onClose, onRecipeSelect }) => {
                     onRecipeSelect?.(recipe);
                     onClose();
                   }}
-                  className="overflow-hidden"
+                  className="overflow-hidden p-0"
                 >
                   <div className="relative">
                     <img
@@ -190,32 +190,32 @@ export const Suggestions = ({ isOpen, onClose, onRecipeSelect }) => {
                     </div>
                   </div>
                   
-                  <div className="p-4">
-                    <h4 className="font-semibold text-secondary-900 mb-2 line-clamp-1">
+                  <div className="p-5">
+                    <h4 className="font-semibold text-secondary-900 mb-3 line-clamp-1">
                       {recipe.title}
                     </h4>
                     
-                    <div className="flex items-center justify-between text-xs text-secondary-500 mb-3">
-                      <div className="flex items-center space-x-1">
-                        <Clock size={12} />
+                    <div className="flex items-center justify-between text-xs text-secondary-500 mb-4">
+                      <div className="flex items-center space-x-2">
+                        <Clock size={14} />
                         <span>{recipe.cookTime}min</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Users size={12} />
+                      <div className="flex items-center space-x-2">
+                        <Users size={14} />
                         <span>{recipe.servings}</span>
                       </div>
-                      <div className="flex items-center space-x-1">
-                        <Star size={12} fill="currentColor" className="text-warning-500" />
+                      <div className="flex items-center space-x-2">
+                        <Star size={14} fill="currentColor" className="text-warning-500" />
                         <span>{recipe.rating}</span>
                       </div>
                     </div>
                     
                     {recipe.missingIngredients.length > 0 && (
-                      <div className="mb-3">
-                        <p className="text-xs text-secondary-600 mb-1">
+                      <div className="mb-4">
+                        <p className="text-xs text-secondary-600 mb-2">
                           Missing ingredients:
                         </p>
-                        <div className="flex flex-wrap gap-1">
+                        <div className="flex flex-wrap gap-2">
                           {recipe.missingIngredients.slice(0, 3).map((ingredient, idx) => (
                             <Badge key={idx} variant="error" size="sm">
                               {ingredient.name}
@@ -253,17 +253,17 @@ export const Suggestions = ({ isOpen, onClose, onRecipeSelect }) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5 }}
         >
-          <Card>
-            <CardContent>
+          <Card className="p-6">
+            <CardContent className="px-0 py-0">
               <div className="text-center">
-                <ChefHat size={32} className="text-primary-600 mx-auto mb-3" />
-                <h4 className="font-semibold text-secondary-900 mb-2">
+                <ChefHat size={36} className="text-primary-600 mx-auto mb-4" />
+                <h4 className="font-semibold text-secondary-900 mb-3">
                   Need more ingredients?
                 </h4>
-                <p className="text-sm text-secondary-600 mb-4">
+                <p className="text-sm text-secondary-600 mb-5">
                   Generate a shopping list based on your selected recipes
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
+                <Button variant="outline" size="sm" className="w-full px-4 py-2">
                   Create Shopping List
                 </Button>
               </div>

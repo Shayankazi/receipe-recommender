@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Clock, Users, Star } from 'lucide-react';
-import { Card } from './ui/Card';
-import { Badge } from './ui/Badge';
+import { Card } from './react-bits';
+import { Badge } from './react-bits';
 import { cn } from '../theme/tokens';
 
 export const RecipeCard = ({ recipe, onClick }) => {
@@ -21,7 +21,6 @@ export const RecipeCard = ({ recipe, onClick }) => {
   return (
     <Card 
       variant="interactive" 
-      hover={true}
       onClick={() => onClick?.(recipe)}
       className="overflow-hidden group h-[480px] flex flex-col"
     >

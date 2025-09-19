@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChefHat, Menu, X, Home, BookOpen, Lightbulb, Calendar } from 'lucide-react';
-import { Button } from './ui/Button';
+import { Search, Menu, X, ChefHat, BookOpen, Calendar, Lightbulb } from 'lucide-react';
+import { Input } from './react-bits';
+import { Button } from './react-bits';
 import { cn } from '../theme/tokens';
 
 export const Navbar = ({ currentPage, onNavigate, onSuggestionsOpen }) => {
@@ -73,10 +74,11 @@ export const Navbar = ({ currentPage, onNavigate, onSuggestionsOpen }) => {
             
             <Button
               variant="outline"
+              size="md"
               onClick={onSuggestionsOpen}
               className="flex items-center space-x-2 ml-4"
             >
-              <Lightbulb size={20} />
+              <Lightbulb size={18} />
               <span>Suggestions</span>
             </Button>
           </div>

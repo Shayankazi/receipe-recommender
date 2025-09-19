@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Filter, X, ChevronDown } from 'lucide-react';
-import { Card } from './ui/Card';
-import { Button } from './ui/Button';
-import { Input, Select } from './ui/Input';
-import { Badge } from './ui/Badge';
+import { Search, Filter, X, ChevronDown } from 'lucide-react';
+import { Card } from './react-bits';
+import { Input } from './react-bits';
+import { Button } from './react-bits';
+import { Badge } from './react-bits';
+import { Select } from './react-bits';
+import { Slider } from './ui/Slider';
 import { getCuisines, getDietaryOptions } from '../data/recipes';
 import { cn } from '../theme/tokens';
 
@@ -41,20 +43,21 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
     <div className={cn('relative', className)}>
       <Button
         variant="outline"
+        size="md"
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2"
       >
-        <Filter size={20} />
+        <Filter size={18} />
         <span>Filters</span>
         {activeFiltersCount > 0 && (
-          <Badge variant="primary" size="sm">
+          <Badge variant="primary" size="sm" className="ml-1">
             {activeFiltersCount}
           </Badge>
         )}
         <ChevronDown 
           size={16} 
           className={cn(
-            'transition-transform duration-200',
+            'transition-transform duration-200 ml-1',
             isOpen && 'rotate-180'
           )}
         />
@@ -77,8 +80,8 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <Card className="p-6 shadow-xl">
-                <div className="flex items-center justify-between mb-4">
+              <Card className="p-8 shadow-xl">
+                <div className="flex items-center justify-between mb-6">
                   <h3 className="text-lg font-semibold text-secondary-900">
                     Filter Recipes
                   </h3>
@@ -86,15 +89,15 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                     variant="ghost"
                     size="sm"
                     onClick={() => setIsOpen(false)}
-                    className="p-1"
+                    className="p-2"
                   >
                     <X size={20} />
                   </Button>
                 </div>
 
-                <div className="space-y-4">
+                <div className="space-y-8">
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-secondary-700 mb-3">
                       Cuisine
                     </label>
                     <Select
@@ -111,7 +114,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-secondary-700 mb-3">
                       Dietary Preferences
                     </label>
                     <Select
@@ -128,7 +131,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-2">
+                    <label className="block text-sm font-medium text-secondary-700 mb-3">
                       Max Cook Time (minutes)
                     </label>
                     <Input
@@ -142,11 +145,12 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-6 pt-4 border-t border-secondary-100">
+                <div className="flex items-center justify-between mt-8 pt-6 border-t border-secondary-100">
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={clearFilters}
+                    className="px-4 py-2"
                   >
                     Clear All
                   </Button>
@@ -154,6 +158,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                     variant="primary"
                     size="sm"
                     onClick={applyFilters}
+                    className="px-6 py-2"
                   >
                     Apply Filters
                   </Button>

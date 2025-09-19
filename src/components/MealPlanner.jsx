@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Plus, ShoppingCart, Trash2, Edit3 } from 'lucide-react';
-import { Card, CardHeader, CardContent } from './ui/Card';
-import { Button } from './ui/Button';
-import { Badge } from './ui/Badge';
-import { Modal, SlidePanel } from './ui/Modal';
-import { Select } from './ui/Input';
+import { Calendar, Plus, Trash2, Clock, Users, ShoppingCart, Edit3 } from 'lucide-react';
+import { Card, CardContent, CardHeader } from './react-bits';
+import { Button } from './react-bits';
+import { Badge } from './react-bits';
+import { Modal } from './react-bits';
+import { Select } from './react-bits';
+import { SlidePanel } from './ui/Modal';
 import { recipes, getRecipeById } from '../data/recipes';
 import { pantryItems } from '../data/pantry';
 import { getWeekDates, mealTypes, generateShoppingList } from '../data/mealPlans';

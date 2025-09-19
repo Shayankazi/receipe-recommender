@@ -1,8 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Search, ChefHat } from 'lucide-react';
-import { Input } from './ui/Input';
-import { Button } from './ui/Button';
+import { Input } from './react-bits/Input';
+import { Button } from './react-bits/Button';
 import { RecipeCard } from './RecipeCard';
 import { FilterPanel } from './FilterPanel';
 import { recipes, filterRecipes } from '../data/recipes';
@@ -84,7 +84,7 @@ export const RecipeList = ({ onRecipeSelect }) => {
                     placeholder="Search recipes, ingredients, or cuisines..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="text-lg py-4"
+                    className="text-base"
                   />
                 </div>
                 <FilterPanel

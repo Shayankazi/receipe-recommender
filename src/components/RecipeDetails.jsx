@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Clock, Users, Star, Plus, Minus, ChefHat, Utensils } from 'lucide-react';
-import { Card, CardHeader, CardContent } from './ui/Card';
-import { Button } from './ui/Button';
-import { Badge } from './ui/Badge';
+import { Clock, Users, Star, ChefHat, X, ArrowLeft, Utensils, Minus, Plus } from 'lucide-react';
+import { Card, CardContent, CardHeader } from './react-bits';
+import { Button } from './react-bits';
+import { Badge } from './react-bits';
+import { Modal } from './react-bits';
 import { Slider } from './ui/Slider';
 import { cn } from '../theme/tokens';
 
