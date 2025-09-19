@@ -80,9 +80,9 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
             >
-              <Card className="p-8 shadow-xl">
+              <Card className="p-8 shadow-xl bg-gray-800 border-gray-600">
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-semibold text-secondary-900">
+                  <h3 className="text-lg font-semibold text-white">
                     Filter Recipes
                   </h3>
                   <Button
@@ -97,7 +97,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
 
                 <div className="space-y-8">
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-3">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">
                       Cuisine
                     </label>
                     <Select
@@ -114,7 +114,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-3">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">
                       Dietary Preferences
                     </label>
                     <Select
@@ -131,7 +131,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary-700 mb-3">
+                    <label className="block text-sm font-medium text-gray-300 mb-3">
                       Max Cook Time (minutes)
                     </label>
                     <Input
@@ -145,7 +145,7 @@ export const FilterPanel = ({ filters, onFiltersChange, className = '' }) => {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between mt-8 pt-6 border-t border-secondary-100">
+                <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-600">
                   <Button
                     variant="ghost"
                     size="sm"

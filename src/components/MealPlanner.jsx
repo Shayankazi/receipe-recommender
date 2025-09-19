@@ -63,7 +63,7 @@ export const MealPlanner = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-primary-50">
+    <div className="min-h-screen bg-black">
       <div className="container py-12">
         {/* Header */}
         <motion.div
@@ -73,15 +73,15 @@ export const MealPlanner = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="flex justify-center mb-6">
-            <div className="p-4 bg-primary-100 rounded-2xl">
-              <Calendar size={48} className="text-primary-600" />
+            <div className="p-4 bg-gray-800 rounded-2xl">
+              <Calendar size={48} className="text-orange-500" />
             </div>
           </div>
           
-          <h1 className="text-4xl font-display font-bold text-secondary-900 mb-4">
+          <h1 className="text-4xl font-display font-bold text-white mb-4">
             Meal Planner
           </h1>
-          <p className="text-xl text-secondary-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
             Plan your weekly meals and generate shopping lists automatically
           </p>
         </motion.div>
@@ -98,7 +98,7 @@ export const MealPlanner = () => {
           </Button>
           
           <div className="text-center">
-            <h2 className="text-2xl font-display font-bold text-secondary-900">
+            <h2 className="text-2xl font-display font-bold text-white">
               {weekDates[0]?.date && weekDates[6]?.date && 
                 `${new Date(weekDates[0].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })} - ${new Date(weekDates[6].date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}`
               }
@@ -122,14 +122,14 @@ export const MealPlanner = () => {
 
         {/* Meal Planning Grid */}
         <motion.div
-          className="bg-white rounded-2xl shadow-sm border border-secondary-100 overflow-hidden"
+          className="bg-gray-800 rounded-2xl shadow-sm border border-gray-600 overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
         >
           {/* Header Row */}
-          <div className="grid grid-cols-8 border-b border-secondary-100">
-            <div className="p-4 bg-secondary-50 font-semibold text-secondary-700">
+          <div className="grid grid-cols-8 border-b border-gray-600">
+            <div className="p-4 bg-gray-700 font-semibold text-gray-300">
               Meal
             </div>
             {weekDates.map((day, index) => (
@@ -137,7 +137,7 @@ export const MealPlanner = () => {
                 key={day.date} 
                 className={cn(
                   'p-4 text-center font-semibold',
-                  day.isToday ? 'bg-primary-50 text-primary-700' : 'bg-secondary-50 text-secondary-700'
+                  day.isToday ? 'bg-orange-900/30 text-orange-400' : 'bg-gray-700 text-gray-300'
                 )}
               >
                 <div className="text-sm">{day.dayName}</div>
@@ -150,8 +150,8 @@ export const MealPlanner = () => {
 
           {/* Meal Rows */}
           {mealTypes.map((mealType) => (
-            <div key={mealType.id} className="grid grid-cols-8 border-b border-secondary-100 last:border-b-0">
-              <div className="p-4 bg-secondary-50 flex items-center">
+            <div key={mealType.id} className="grid grid-cols-8 border-b border-gray-600 last:border-b-0">
+              <div className="p-4 bg-gray-700 flex items-center">
                 <Badge variant="default" className={mealType.color}>
                   {mealType.name}
                 </Badge>
@@ -165,18 +165,18 @@ export const MealPlanner = () => {
                   <motion.div
                     key={`${day.date}-${mealType.id}`}
                     className={cn(
-                      'p-2 min-h-[100px] border-r border-secondary-100 last:border-r-0',
-                      day.isToday && 'bg-primary-50/30'
+                      'p-2 min-h-[100px] border-r border-gray-600 last:border-r-0',
+                      day.isToday && 'bg-orange-900/20'
                     )}
-                    whileHover={{ backgroundColor: 'rgba(0, 0, 0, 0.02)' }}
+                    whileHover={{ backgroundColor: 'rgba(255, 255, 255, 0.02)' }}
                   >
                     {recipe ? (
                       <Card className="h-full group cursor-pointer">
                         <div className="p-3 h-full flex flex-col">
-                          <div className="flex items-start justify-between mb-2">
-                            <h4 className="text-sm font-medium text-secondary-900 line-clamp-2 flex-1">
-                              {recipe.title}
-                            </h4>
+                            <div className="flex items-start justify-between mb-2">
+                              <h4 className="text-sm font-medium text-white line-clamp-2 flex-1">
+                                {recipe.title}
+                              </h4>
                             <div className="flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                               <Button
                                 variant="ghost"
@@ -200,8 +200,8 @@ export const MealPlanner = () => {
                             </div>
                           </div>
                           
-                          <div className="flex items-center justify-between text-xs text-secondary-500 mt-auto">
-                            <span>{recipe.cookTime}min</span>
+                          <div className="flex items-center justify-between text-xs text-gray-400 mt-auto">
+                              <span>{recipe.cookTime}min</span>
                             <Badge variant="accent" size="sm">
                               {meal.servings} servings
                             </Badge>
@@ -210,7 +210,7 @@ export const MealPlanner = () => {
                       </Card>
                     ) : (
                       <motion.button
-                        className="w-full h-full border-2 border-dashed border-secondary-200 rounded-xl flex items-center justify-center text-secondary-400 hover:border-primary-300 hover:text-primary-600 transition-colors group"
+                        className="w-full h-full border-2 border-dashed border-gray-600 rounded-xl flex items-center justify-center text-gray-400 hover:border-orange-500 hover:text-orange-500 transition-colors group"
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => {
